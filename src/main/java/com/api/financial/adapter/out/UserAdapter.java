@@ -10,6 +10,7 @@ import com.api.financial.domain.model.dto.inbound.UserInbound;
 import com.api.financial.domain.model.dto.outbound.UserOutbound;
 import com.api.financial.domain.port.UserPort;
 import com.api.financial.util.Message;
+import com.api.financial.util.UserUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -28,6 +29,8 @@ public class UserAdapter implements UserPort {
     private final ProfileRepository profileRepository;
     private final BCryptPasswordEncoder passwordEncoder;
     private final UserMapper userMapper;
+
+    private final UserUtils userUtils;
 
 
     @Override
@@ -75,16 +78,9 @@ public class UserAdapter implements UserPort {
 
     @Override
     public void delete(Long userId) {
-        User user = fetchUserById(userId);
+        User user = userUtils.fetchUserById(userId);
         userRepository.delete(user);
         log.info("Usuário deletado com sucesso - ID: {}", userId);
-    }
-
-    @Override
-    public User fetchUserById(Long userId) {
-        log.info("Buscando usuário por ID: {}", userId);
-        return userRepository.findById(userId)
-                .orElseThrow(Message.USER_NOT_FOUND::asBusinessException);
     }
 
     private Profile fetchProfile() {

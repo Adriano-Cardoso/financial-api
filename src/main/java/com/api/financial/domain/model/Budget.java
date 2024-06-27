@@ -9,11 +9,11 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "tb_accounts")
+@Table(name = "tb_budgets")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Account {
+public class Budget {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,21 +24,28 @@ public class Account {
     private User user;
 
     @Column(nullable = false)
-    private String accountType;
+    private Integer month;
 
     @Column(nullable = false)
-    private BigDecimal balance;
+    private Integer year;
 
     @Column(nullable = false)
+    private BigDecimal budgetAmount;
+
+    @Column(nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
     @Column(nullable = false)
     private LocalDateTime updatedAt;
 
-    @Column(nullable = false, unique = true)
-    private String accountNumber;
+    @PrePersist
+    protected void onCreate() {
+        createdAt = LocalDateTime.now();
+    }
 
-    @Column(nullable = false, unique = true)
-    private String transactionId;
+    @PreUpdate
+    protected void onUpdate() {
+        updatedAt = LocalDateTime.now();
+    }
 
 }

@@ -1,6 +1,5 @@
 package com.api.financial.domain.port;
 
-import com.api.financial.domain.model.User;
 import com.api.financial.domain.model.dto.inbound.UpdateUserInbound;
 import com.api.financial.domain.model.dto.inbound.UserInbound;
 import com.api.financial.domain.model.dto.outbound.UserOutbound;
@@ -13,7 +12,6 @@ public interface UserPort {
     UserOutbound update(String email, UpdateUserInbound updateUserInbound);
     Page<UserOutbound> searchRegisteredUsers(Pageable pageable, String identifier);
     void delete(Long userId);
-    User fetchUserById(Long userId);
 
 
 }
