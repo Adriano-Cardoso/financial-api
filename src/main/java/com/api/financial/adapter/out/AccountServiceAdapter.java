@@ -22,7 +22,6 @@ import java.math.BigDecimal;
 public class AccountServiceAdapter implements AccountServicePort {
 
     private final UserUtils userUtils;
-    private final AccountUtils accountUtils;
     private final AccountMapper accountMapper;
     private final AccountRepository accountRepository;
 

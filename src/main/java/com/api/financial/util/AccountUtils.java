@@ -1,16 +1,14 @@
 package com.api.financial.util;
 
-
-import lombok.RequiredArgsConstructor;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.util.UUID;
 
 @Slf4j
-@Component
-@RequiredArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class AccountUtils {
 
     public static void validateInitialBalance(BigDecimal initialBalance) {
