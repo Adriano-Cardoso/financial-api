@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.api</groupId>
-	<artifactId>financialmanager</artifactId>
+	<artifactId>financial-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>financialmanager</name>
+	<name>financial-api</name>
 	<description>API para gerenciamento financeiro pessoal</description>
 	<url/>
 	<licenses>
